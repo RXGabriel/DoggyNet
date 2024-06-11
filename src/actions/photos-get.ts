@@ -1,15 +1,6 @@
 "use server";
 
-export type Photo = {
-  id: number;
-  author: string;
-  title: string;
-  date: string;
-  src: string;
-  peso: string;
-  acessos: string;
-  total_comments: string;
-};
+import { Photo } from "@/interfaces/photo";
 
 export default async function photosGet() {
   const response = await fetch(

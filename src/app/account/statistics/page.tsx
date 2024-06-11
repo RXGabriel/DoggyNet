@@ -1,7 +1,7 @@
 export default async function StatisticPage() {
   return (
     <main>
-      <h1>Account</h1>
+      <h1>Statistics</h1>
     </main>
   );
 }

@@ -1,7 +1,7 @@
 export default async function CreatePage() {
   return (
     <main>
-      <h1>Account</h1>
+      <h1>Create</h1>
     </main>
   );
 }

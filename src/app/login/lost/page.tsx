@@ -1,7 +1,7 @@
 export default async function LostPage() {
   return (
     <main>
-      <h1>Account</h1>
+      <h1>Lost</h1>
     </main>
   );
 }

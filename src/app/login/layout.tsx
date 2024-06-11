@@ -1,14 +1,14 @@
-import React from "react";
+import type { ReactNode } from "react";
 import styles from "./login.module.css";
 
 export default async function LoginLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
-    <div className={styles.login}>
+    <section className={styles.login}>
       <div className={styles.forms}>{children}</div>
-    </div>
+    </section>
   );
 }

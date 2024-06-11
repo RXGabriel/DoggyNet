@@ -22,6 +22,10 @@ export const PHOTO_POST = () => {
   return `${API_URL}/api/photo`;
 };
 
+export const PHOTOS_GET = () => {
+  return `${API_URL}/api/photo`;
+};
+
 export const PHOTO_GET = (id: string) => {
   return `${API_URL}/api/photo/${id}`;
 };

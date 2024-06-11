@@ -7,6 +7,7 @@ import Button from "@/components/forms/button";
 import Input from "@/components/forms/input";
 import ErrorMessage from "../helper/error-message";
 import React from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import styles from "./login-form.module.css";
 
@@ -14,13 +15,9 @@ function FormButton() {
   const { pending } = useFormStatus();
 
   return (
-    <>
-      {pending ? (
-        <Button disabled={pending}>Sending...</Button>
-      ) : (
-        <Button>Sign in</Button>
-      )}
-    </>
+    <Button type="submit" disabled={pending} aria-label="open">
+      {pending ? "Reloading..." : "open"}
+    </Button>
   );
 }
 
@@ -31,15 +28,25 @@ export default function LoginForm() {
     data: null,
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (state.ok) window.location.href = "/account";
   }, [state.ok]);
 
   return (
     <>
       <form action={action} className={styles.form}>
-        <Input label="User" name="username" type="text" />
-        <Input label="Password" name="password" type="password" />
+        <Input
+          label="User"
+          name="username"
+          type="text"
+          autoComplete="username"
+        />
+        <Input
+          label="Password"
+          name="password"
+          type="password"
+          autoComplete="current-password"
+        />
         <ErrorMessage error={state.error} />
         <FormButton />
       </form>

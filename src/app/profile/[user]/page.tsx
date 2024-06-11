@@ -1,4 +1,4 @@
-export default async function ProfilePage({
+export default async function ProfileUserPage({
   params,
 }: {
   params: { user: string };

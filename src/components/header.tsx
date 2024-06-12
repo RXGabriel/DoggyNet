@@ -1,29 +1,31 @@
+import userGet from "@/actions/user-get";
+import { User } from "@/interfaces/user";
+import Image from "next/image";
 import Link from "next/link";
 import styles from "./header.module.css";
-import Image from "next/image";
 
 export default async function Header() {
-  const user = true;
+  const { data } = (await userGet()) as { data: User };
 
   return (
     <header className={styles.header}>
       <nav className={`${styles.nav} container`}>
-        <Link className={styles.logo} href={"/"}>
+        <Link className={styles.logo} href="/">
           <Image
-            src={"/assets/dogs.svg"}
+            src="/assets/dogs.svg"
             alt="Dogs"
             width={28}
             height={22}
             priority
           />
         </Link>
-        {user ? (
+        {data ? (
           <Link className={styles.login} href="/account">
-            Dogs
+            {data.username}
           </Link>
         ) : (
           <Link className={styles.login} href="/login">
-            Login / Criar
+            Login / Create
           </Link>
         )}
       </nav>

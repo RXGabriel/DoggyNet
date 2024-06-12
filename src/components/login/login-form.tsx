@@ -15,8 +15,8 @@ function FormButton() {
   const { pending } = useFormStatus();
 
   return (
-    <Button type="submit" disabled={pending} aria-label="open">
-      {pending ? "Reloading..." : "open"}
+    <Button type="submit" disabled={pending} aria-label="Sign in">
+      {pending ? "Reloading..." : "Sign in"}
     </Button>
   );
 }

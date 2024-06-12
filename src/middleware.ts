@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function middleware(req: NextRequest) {
-  const token = req.cookies.get("authToken")?.value;
+  const token = req.cookies.get("token")?.value;
   const authenticated = !!token;
 
   if (!authenticated && req.nextUrl.pathname.startsWith("/account")) {

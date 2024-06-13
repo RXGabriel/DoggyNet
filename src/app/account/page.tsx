@@ -1,13 +1,13 @@
-"use client";
+import { Metadata } from "next";
 
-import { useUser } from "@/context/user-context";
+export const metadata: Metadata = {
+  title: "My account | Doggy Net",
+};
 
 export default function AccountPage() {
-  const { user } = useUser();
-
   return (
     <main>
-      <h1>Account: {user?.nome}</h1>
+      <h1>Account</h1>
     </main>
   );
 }

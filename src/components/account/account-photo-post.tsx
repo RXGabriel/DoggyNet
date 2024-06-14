@@ -33,9 +33,9 @@ export default function AccountPhotoPost() {
   return (
     <section className={`${styles.photoPost} animeLeft`}>
       <form action={action} className={styles.form}>
-        <Input label="Name" name="name" type="text" />
-        <Input label="Weight" name="weight" type="number" />
-        <Input label="Age" name="age" type="number" />
+        <Input label="Name" name="nome" type="text" />
+        <Input label="Weight" name="peso" type="number" />
+        <Input label="Age" name="idade" type="number" />
 
         <input
           onChange={handleImgChange}

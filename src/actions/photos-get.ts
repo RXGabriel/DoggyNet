@@ -1,13 +1,27 @@
 "use server";
 
-import { Photo } from "@/interfaces/photo";
+import { PHOTOS_GET } from "@/functions/api";
+import apiError from "@/functions/api-error";
+import { Photo, PhotosGetParams } from "@/interfaces/photo";
 
-export default async function photosGet() {
-  const response = await fetch(
-    "https://dogsapi.origamid.dev/json/api/photo?_page=1&_total=6&_user=0",
-    { next: { revalidate: 10, tags: ["photos"] } }
-  );
+export default async function photosGet(
+  { page = 1, total = 6, user = 0 }: PhotosGetParams = {},
+  optionsFetch?: RequestInit
+) {
+  try {
+    const options = optionsFetch || {
+      next: { revalidate: 10, tags: ["photos"] },
+    };
+    const URL = PHOTOS_GET({ page, total, user });
 
-  const data = (await response.json()) as Photo[];
-  return data;
+    const response = await fetch(URL, options);
+
+    const data = (await response.json()) as Photo[];
+
+    if (!response.ok) throw new Error("Error on get photos");
+
+    return { data, ok: true, error: "" };
+  } catch (error) {
+    return apiError(error);
+  }
 }

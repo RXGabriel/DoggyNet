@@ -1,5 +1,5 @@
 export interface State {
   ok: boolean;
   error: string;
-  data: string | null;
+  data: undefined | null;
 }

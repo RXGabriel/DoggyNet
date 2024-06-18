@@ -1,5 +1,6 @@
 "use client";
 
+import PhotoComments from "@/components/photo/photo-comments";
 import PhotoDelete from "@/components/photo/photo-delete";
 import { useUser } from "@/context/user-context";
 import { PhotoData } from "@/interfaces/photo";
@@ -52,6 +53,7 @@ const PhotoContent = ({
           </ul>
         </div>
       </div>
+      <PhotoComments single={single} id={photo.id} comments={comments} />
     </div>
   );
 };

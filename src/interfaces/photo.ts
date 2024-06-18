@@ -49,3 +49,9 @@ export interface PhotoData {
   photo: Photo;
   comments: Comment[];
 }
+
+export interface PhotoStatsData {
+  id: number;
+  title: string;
+  acessos: string;
+}

@@ -3,9 +3,10 @@ import "./globals.css";
 import { type_second } from "@/functions/fonts";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import { UserContextProvider } from "@/context/user-context";
+import type { ReactNode } from "react";
 import userGet from "@/actions/user-get";
-import { transformUser } from "@/utils/transformUser";
+import { User } from "@/interfaces/user";
+import { UserContextProvider } from "@/context/user-context";
 
 export const metadata: Metadata = {
   title: "Doggy Net",
@@ -15,10 +16,10 @@ export const metadata: Metadata = {
 export default async function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
-  const { data: userFromServer } = await userGet();
-  const user = transformUser(userFromServer);
+  const { data: user } = (await userGet()) as { data: User };
+
   return (
     <html lang="en">
       <body className={type_second.variable}>

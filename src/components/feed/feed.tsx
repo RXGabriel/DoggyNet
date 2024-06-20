@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import photosGet from "@/actions/photos-get";
@@ -46,7 +47,7 @@ export default function Feed({ photos, user }: Photos) {
     }
 
     getPagePhotos(page);
-  }, [page, user]);
+  }, [page]);
 
   useEffect(() => {
     if (infinite) {

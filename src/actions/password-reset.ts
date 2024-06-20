@@ -1,12 +1,11 @@
 "use server";
 
 import { PASSWORD_RESET } from "@/functions/api";
+import apiError from "@/functions/api-error";
 import { State } from "@/interfaces/form";
+import { redirect } from "next/navigation";
 
-export default async function passwordReset(
-  state: State,
-  formData: FormData
-): Promise<State> {
+export default async function passwordReset(state: State, formData: FormData) {
   const password = formData.get("password") as string | null;
   const login = formData.get("login") as string | null;
   const key = formData.get("key") as string | null;
@@ -20,16 +19,12 @@ export default async function passwordReset(
 
     const response = await fetch(URL, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ login, key, password }),
+      body: formData,
     });
-
     if (!response.ok) throw new Error("Not authorized to reset password");
-
-    return { ok: true, error: "", data: "/login" };
   } catch (error: unknown) {
-    return { ok: false, error: (error as Error).message, data: null };
+    return apiError(error);
   }
+
+  redirect("/login");
 }

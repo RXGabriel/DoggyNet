@@ -1,5 +1,5 @@
 import AccountHeader from "@/components/account/account-header";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export default async function AccountLayout({
   children,
@@ -7,9 +7,9 @@ export default async function AccountLayout({
   children: ReactNode;
 }) {
   return (
-    <div className="container">
+    <section className="container">
       <AccountHeader />
       {children}
-    </div>
+    </section>
   );
 }

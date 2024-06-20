@@ -24,7 +24,6 @@ const PhotoComments = (props: PhotoCommentsProps) => {
 
   return (
     <>
-      <h2 style={{ marginBottom: "0.5rem" }}>Comments</h2>
       <ul
         ref={commentsSection}
         className={`${styles.comments} ${props.single ? styles.single : ""}`}

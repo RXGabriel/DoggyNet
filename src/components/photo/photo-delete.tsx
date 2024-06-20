@@ -15,18 +15,9 @@ export default function PhotoDelete({ id }: { id: string }) {
     }
     setLoading(false);
   }
-
   return (
-    <>
-      {loading ? (
-        <button className={styles.delete} disabled>
-          Delete
-        </button>
-      ) : (
-        <button className={styles.delete} onClick={handleClick}>
-          Delete
-        </button>
-      )}
-    </>
+    <button className={styles.delete} onClick={handleClick} disabled={loading}>
+      {loading ? "Deleting..." : "Delete"}
+    </button>
   );
 }

@@ -1,13 +1,12 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import passwordLost from "@/actions/password-lost";
 import Button from "@/components/forms/button";
 import Input from "@/components/forms/input";
-import ErrorMessage from "../helper/error-message";
+import ErrorMessage from "@/components/helper/error-message";
 import { useEffect, useState } from "react";
+import { useFormState, useFormStatus } from "react-dom";
 import styles from "./login-form.module.css";
-import passwordLost from "@/actions/password-lost";
 
 function FormButton() {
   const { pending } = useFormStatus();
@@ -27,9 +26,8 @@ export default function LoginLostForm() {
   });
 
   const [url, setUrl] = useState("");
-  useEffect(() => {
-    setUrl(window.location.href.replace("lost", "reset"));
-  }, []);
+
+  useEffect(() => setUrl(window.location.href.replace("lost", "reset")), []);
 
   return (
     <form action={action} className={styles.form}>
